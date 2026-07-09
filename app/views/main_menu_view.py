@@ -8,8 +8,8 @@ class MainMenuView:
         print("1. Player Management")
         print("0. Exit")
 
-    def display_error_message(self):
-        print("Invalid option. Please try again.")
+    def display_error_message(self, e : ValueError):
+        print(f"Invalid option : {e}. Please try again.")
         
     def display_exit_message(self):
         print("Closing the Chess Tournament Manager.") 

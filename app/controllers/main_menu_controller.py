@@ -1,7 +1,8 @@
 MAX_MENU_OPTION = 1
 
-from app.utils.input_validation import validate_option
+from app.utils.input_validation import validate_numeric_input
 from app.views.main_menu_view import MainMenuView
+from app.controllers.player_controller import PlayerController
 
 class MainMenuController:
     def __init__(self):
@@ -12,14 +13,16 @@ class MainMenuController:
             self.view.display_menu()
             option = input("Enter your choice: ")
             try:
-                validate_option(option, MAX_MENU_OPTION)
+                validate_numeric_input(option, 0, MAX_MENU_OPTION)
             except ValueError as e:
-                self.view.display_error_message()
+                self.view.display_error_message(e)
                 continue
             
             match int(option):
                 case 1:
-                    print("Player Management selected.")
+                    player_controller = PlayerController()
+                    player_controller.run()
+                    
                 case 0:
                     self.view.display_exit_message()
                     break
