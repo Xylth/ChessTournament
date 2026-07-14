@@ -19,6 +19,13 @@ class PlayerView:
             return
         print("All players :")
         print(tabulate(players_data, headers="keys"))
+    
+    def display_player_created(self, player_data):
+        print("New player created:")
+        print(tabulate(player_data, headers="keys"))
+        
+    def display_player_creation(self):
+        print("Create a new player:")
         
     def display_request_first_name(self):
         print("Enter first name: ")
@@ -29,23 +36,8 @@ class PlayerView:
     def display_request_birth_date(self):
         print("Enter birth date: ")
     
-    def display_request_birth_date_year(self):
-        print("Enter birth date year (YYYY): ")
-    
-    def display_request_birth_date_month(self):
-        print("Enter birth date month (MM): ")
-        
-    def display_request_birth_date_day(self):
-        print("Enter birth date day (DD): ")
-    
-    def display_current_birth_date(self, current_birth_date):
-        print(f"Current birth date: {current_birth_date}")
-    
     def display_request_national_id(self):
         print("Enter national ID (optional): ")
-        
-    def display_player_creation(self):
-        print("Create a new player:")
                 
     def display_error_message(self, e : ValueError, retry: bool = False):
         if retry:

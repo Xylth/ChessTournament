@@ -8,7 +8,7 @@ class MainMenuController:
     def __init__(self):
         self.view = MainMenuView()
 
-    def run(self):
+    def run_menu(self):
         while True:
             self.view.display_menu()
             option = input("Enter your choice: ")
@@ -21,7 +21,7 @@ class MainMenuController:
             match int(option):
                 case 1:
                     player_controller = PlayerController()
-                    player_controller.run()
+                    player_controller.run_menu()
                     
                 case 0:
                     self.view.display_exit_message()
