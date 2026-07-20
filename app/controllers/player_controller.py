@@ -1,6 +1,5 @@
 MAX_MENU_OPTION = 2
 
-from datetime import datetime
 from app.models.managers.player_manager import PlayerManager
 from app.models.entities.player import Player
 from app.views.player_view import PlayerView
@@ -82,11 +81,13 @@ class PlayerController:
         
         try:
             player = Player(None, first_name, last_name, birth_date, idn)
-            player_data = self.player_manager.create_player(player)
-            self.view.display_player_created([player_data])
+            new_player = self.player_manager.save(player)
+            new_player_data = new_player.get_dict()
+            self.view.display_player_created([new_player_data])
         except ValueError as e:
             self.view.display_error_message(e,False)
                     
     def view_all_players(self): 
-        players_data = self.player_manager.read_all_players()
+        players = self.player_manager.get()
+        players_data = [player.get_dict() for player in players]
         self.view.display_players(players_data)

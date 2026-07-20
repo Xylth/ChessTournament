@@ -1,5 +1,3 @@
-from unittest import case
-
 from tabulate import tabulate
 
 class PlayerView:
